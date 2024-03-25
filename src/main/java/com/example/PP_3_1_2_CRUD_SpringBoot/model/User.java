@@ -44,7 +44,6 @@ public class User {
                 && Objects.equals(getEmail(), user.getEmail());
     }
 
-    // hashCode method
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getName(), getLastName(), getEmail());
