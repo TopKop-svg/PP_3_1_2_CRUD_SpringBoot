@@ -1,9 +1,16 @@
 package com.example.PP_3_1_2_CRUD_SpringBoot.model;
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+
+import java.util.Objects;
 
 @Entity
 @Table(name="users")
@@ -25,6 +32,23 @@ public class User {
     @NotBlank(message = "Email is required")
     @Email(message = "Email must be a valid email address")
     private String email;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return Objects.equals(getId(), user.getId())
+                && Objects.equals(getName(), user.getName())
+                && Objects.equals(getLastName(), user.getLastName())
+                && Objects.equals(getEmail(), user.getEmail());
+    }
+
+    // hashCode method
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getLastName(), getEmail());
+    }
 
     public User() {}
 

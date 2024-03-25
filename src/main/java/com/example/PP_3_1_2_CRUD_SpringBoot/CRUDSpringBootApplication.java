@@ -10,4 +10,6 @@ public class CRUDSpringBootApplication {
 		SpringApplication.run(CRUDSpringBootApplication.class, args);
 	}
 
+
+
 }
